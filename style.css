@@ -1,0 +1,529 @@
+/* ===== Reset and Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f2f5;
+    overflow: hidden;
+}
+
+/* ===== Dark Mode ===== */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .control-panel {
+    background: #2d2d2d;
+    border-bottom: 1px solid #404040;
+}
+
+body.dark-mode .control-group label {
+    color: #e0e0e0;
+}
+
+body.dark-mode .control-group select,
+body.dark-mode .control-group input {
+    background: #3d3d3d;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+body.dark-mode .facility-list {
+    background: #2d2d2d;
+    border-right-color: #404040;
+}
+
+body.dark-mode .facility-card {
+    background: #3d3d3d;
+    border-color: #555;
+}
+
+body.dark-mode .facility-card:hover {
+    background: #4a4a4a;
+    border-color: #00d9ff;
+}
+
+body.dark-mode .facility-card .facility-name {
+    color: #00d9ff;
+}
+
+body.dark-mode .facility-card .facility-type {
+    color: #aaa;
+}
+
+body.dark-mode .no-results,
+body.dark-mode .placeholder-text {
+    color: #aaa;
+}
+
+body.dark-mode #route-info {
+    background: #2d2d2d;
+    border: 1px solid #555;
+}
+
+/* ===== Header Styles ===== */
+header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+    color: white;
+    padding: 16px 24px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    position: relative;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.map-controls {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.map-toggle-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.map-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.map-toggle-btn.active {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== Control Panel Styles ===== */
+.control-panel {
+    background: white;
+    padding: 16px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 999;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+}
+
+.control-group select,
+.control-group input {
+    padding: 8px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s;
+}
+
+.control-group select:focus,
+.control-group input:focus {
+    outline: none;
+    border-color: #2a5298;
+}
+
+.control-group input[type="number"] {
+    width: 120px;
+}
+
+/* ===== Button Styles ===== */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.btn-location {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.btn-location:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.btn-search {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+}
+
+.btn-search:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ===== Main Content Area ===== */
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ===== Facility List Sidebar ===== */
+.facility-list {
+    width: 320px;
+    background: white;
+    border-right: 2px solid #e0e0e0;
+    overflow-y: auto;
+    padding: 16px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.facility-list .placeholder-text {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding: 20px;
+    text-align: center;
+}
+
+.facility-list .placeholder-text p {
+    margin-bottom: 12px;
+}
+
+.facility-list h3 {
+    font-size: 1.1rem;
+    color: #1e3c72;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #2a5298;
+}
+
+.facility-list .no-results {
+    color: #888;
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* ===== Facility Card Styles ===== */
+.facility-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.facility-card:hover {
+    background: #eff6ff;
+    border-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    transform: translateX(4px);
+}
+
+.facility-card .facility-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1e3c72;
+    margin-bottom: 6px;
+}
+
+.facility-card .facility-type {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.facility-card .facility-distance {
+    font-size: 0.9rem;
+    color: #059669;
+    font-weight: 600;
+}
+
+.facility-card .facility-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.facility-card .btn-route {
+    flex: 1;
+    padding: 6px 12px;
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.facility-card .btn-route:hover {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+}
+
+/* ===== Map Container ===== */
+#map {
+    flex: 1;
+    height: 100%;
+    min-height: 400px;
+}
+
+/* Add glow effect to route for better visibility */
+.route-line {
+    filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.8));
+}
+
+/* ===== Route Info Display ===== */
+#route-info {
+    background: white;
+    padding: 0;
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    transition: padding 0.3s;
+    overflow: hidden;
+    max-height: 0;
+}
+
+#route-info.active {
+    padding: 15px 20px;
+    max-height: 100px;
+}
+
+#route-info .info-item {
+    display: inline-block;
+    margin: 0 15px;
+    padding: 8px 15px;
+    background: #f8f9fa;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+#route-info .info-item span {
+    color: #3498db;
+    font-weight: 700;
+}
+
+/* ===== Custom Leaflet Styles ===== */
+.leaflet-popup-content-wrapper {
+    border-radius: 10px;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.2);
+}
+
+.leaflet-popup-content {
+    margin: 12px 16px;
+    font-size: 0.9rem;
+}
+
+.popup-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1e3c72;
+    margin-bottom: 8px;
+}
+
+.popup-type {
+    color: #6b7280;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+
+.popup-distance {
+    color: #059669;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.popup-btn {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.popup-btn:hover {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+}
+
+/* ===== Loading State ===== */
+.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.loading::after {
+    content: '⏳';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    .map-controls {
+        position: static;
+        transform: none;
+        justify-content: center;
+        margin-top: 8px;
+    }
+
+    header {
+        padding: 12px 16px;
+    }
+
+    .control-panel {
+        padding: 12px 16px;
+        gap: 10px;
+    }
+
+    .control-group {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .control-group label {
+        font-size: 0.85rem;
+    }
+
+    .control-group select,
+    .control-group input {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .facility-list {
+        width: 100%;
+        max-height: 250px;
+        border-right: none;
+        border-bottom: 2px solid #e0e0e0;
+    }
+
+    #map {
+        height: calc(100vh - 500px);
+        min-height: 300px;
+    }
+
+    #route-info {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        transform: none;
+        min-width: auto;
+    }
+
+    #route-info .info-item {
+        display: block;
+        margin: 6px 0;
+    }
+}
+
+/* ===== Scrollbar Styling ===== */
+.facility-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.facility-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.facility-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.facility-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* ===== Animation ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.facility-card {
+    animation: fadeIn 0.3s ease-in-out;
+}

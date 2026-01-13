@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Navigasi & Fasilitas Terdekat</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+          crossorigin="">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>🗺️ Aplikasi Navigasi & Fasilitas Terdekat</h1>
+        <div class="map-controls">
+            <button class="map-toggle-btn" id="toggleMapStyle" title="Ganti Gaya Peta">🗺️ Gaya Peta</button>
+            <button class="map-toggle-btn" id="toggleDarkMode" title="Dark Mode">🌙 Dark Mode</button>
+        </div>
+    </header>
+
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <button id="useMyLocation" class="btn btn-location">📍 Gunakan Lokasi Saya</button>
+        
+        <div class="control-group">
+            <label for="categorySelect">Kategori Fasilitas:</label>
+            <select id="categorySelect">
+                <option value="all">Semua Fasilitas</option>
+                <option value="hospital">Rumah Sakit</option>
+                <option value="clinic">Klinik</option>
+                <option value="school">Sekolah</option>
+                <option value="university">Universitas</option>
+                <option value="atm">ATM</option>
+                <option value="restaurant">Restoran</option>
+                <option value="cafe">Kafe</option>
+                <option value="fuel">SPBU</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label for="radiusInput">Radius (meter):</label>
+            <input type="number" id="radiusInput" value="1000" min="100" max="5000" step="100">
+        </div>
+
+        <button id="searchFacilities" class="btn btn-search">🔍 Cari Fasilitas Terdekat</button>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Facility List Sidebar -->
+        <div id="facility-list" class="facility-list">
+            <div class="placeholder-text">
+                <p>📌 Klik "Gunakan Lokasi Saya" atau klik pada peta untuk memilih titik pusat pencarian.</p>
+                <p>Kemudian pilih kategori fasilitas dan radius, lalu klik "Cari Fasilitas Terdekat".</p>
+            </div>
+        </div>
+
+        <!-- Map Container -->
+        <div id="map"></div>
+    </div>
+
+    <!-- Route Info Display -->
+    <div id="route-info"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+            crossorigin=""></script>
+    
+    <!-- Custom JS -->
+    <script src="main.js"></script>
+</body>
+</html>
